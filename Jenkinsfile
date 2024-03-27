@@ -1,5 +1,5 @@
-def frontendImage="olmy2016/panda2024/frontend"
-def backendImage="olmy2016/panda2024/backend"
+def frontendImage="olmy2016/frontend"
+def backendImage="olmy2016/backend"
 def dockerRegistry=""
 def registryCredentials="dockerhub"
 def backendDockerTag=""
