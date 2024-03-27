@@ -31,6 +31,14 @@ pipeline {
                     currentBuild.description = "Backend: ${backendDockerTag}, Frontend: ${frontendDockerTag}"
                 }
             }
+
+        }
+
+        stage('Container rm') {
+            steps {
+                sh 'docker rm -f backend'
+                sh 'docker rm -f frontend'
+            }
         }
     }   
 }
