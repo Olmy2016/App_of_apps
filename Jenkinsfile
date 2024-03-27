@@ -61,7 +61,7 @@ pipeline {
                 
                 '''
             }
-
+        }
          
     } 
     post{
@@ -69,6 +69,5 @@ pipeline {
                 sh 'docker-compose down'
                 cleanWs()
             }
-         }  
-    }
+    }  
 }
