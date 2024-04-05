@@ -9,7 +9,7 @@ pipeline {
     agent { 
         label 'agent' 
     }
-    tool {
+    tools {
         terraform 'terraform'
     }
 
