@@ -71,7 +71,7 @@ pipeline {
         stage('Run terraform') {
             steps {
                 dir('Terraform') {                
-                    git branch: 'main', url: 'https://github.com/olmy2016/Terraform'
+                    git branch: 'main', url: 'https://github.com/olmy2016/Terraform2'
                     withAWS(credentials:'AWS', region: 'us-east-1') {
                             sh 'terraform init -backend-config=bucket=slawomir-skarba-panda-devops-core-17'
                             sh 'terraform apply -auto-approve -var bucket_name=slawomir-skarba-panda-devops-core-17'
