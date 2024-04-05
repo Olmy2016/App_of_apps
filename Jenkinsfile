@@ -10,7 +10,7 @@ pipeline {
         label 'agent' 
     }
     tools {
-        terraform 'terraform'
+        terraform 'Terraform'
     }
 
     environment {
