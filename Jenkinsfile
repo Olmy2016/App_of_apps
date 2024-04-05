@@ -9,6 +9,10 @@ pipeline {
     agent { 
         label 'agent' 
     }
+    tool {
+        terraform 'terraform'
+    }
+
     environment {
         PIP_BREAK_SYSTEM_PACKAGES=1
     }
@@ -53,6 +57,8 @@ pipeline {
             }
          }
 
+        
+
         stage('Tests') {
             steps {
                 sh '''
@@ -60,6 +66,18 @@ pipeline {
                     python3 -m pytest ./test/selenium/frontendTest.py
                 
                 '''
+            }
+        }
+        stage('Run terraform') {
+            steps {
+                dir('Terraform') {                
+                    git branch: 'main', url: 'https://github.com/olmy2016/Terraform'
+                    withAWS(credentials:'AWS', region: 'us-east-1') {
+                            sh 'terraform init -backend-config=bucket=slawomir-skarba-panda-devops-core-17'
+                            sh 'terraform apply -auto-approve -var bucket_name=slawomir-skarba-panda-devops-core-17'
+                            
+                    } 
+                }
             }
         }
          
